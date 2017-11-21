@@ -1,96 +1,50 @@
-::-webkit-scrollbar-track {
-  background-color: #f7f7f7; }
+#app {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Arial';
+  color: white; }
+  #app #schedule {
+    max-width: 775px;
+    margin: 50px auto; }
+    #app #schedule table {
+      z-index: -3;
+      border-collapse: collapse;
+      border: none !important; }
+      #app #schedule table tbody tr:first-child > td {
+        height: 75px;
+        font-size: 26.25px;
+        font-weight: bold;
+        color: white;
+        background: #465D9E !important; }
+      #app #schedule table tbody tr:nth-child(2) > td, #app #schedule table tbody tr:last-child > td {
+        background: #2E3E6B !important; }
+      #app #schedule table tbody tr td {
+        border: 1px solid #363636;
+        height: 25px;
+        width: 85px;
+        text-align: center;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+        color: #95989A;
+        background: #0B0A1D; }
+        #app #schedule table tbody tr td:first-child, #app #schedule table tbody tr td:nth-child(9) {
+          background: #151336; }
+  #app .sched-option {
+    background-color: #e5e5e5; }
+    #app .sched-option select {
+      padding: 10px;
+      width: 170px; }
 
-::-webkit-scrollbar {
-  width: 10px;
-  border: none; }
+.highlighted {
+  background: red; }
 
-::-webkit-scrollbar-thumb:focus {
-  background-color: #2d3e6b; }
+html {
+  box-sizing: border-box; }
 
-::-webkit-scrollbar:horizontal {
-  height: 20px; }
-
-::-webkit-scrollbar-thumb {
-  background-color: #304171; }
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: #2b3a64;
-  transition: 0.325s; }
-
-/*****variables*****/
-/*****variables*****/
-.sched {
-  height: 500px;
-  width: 1000px;
-  overflow-y: scroll;
-  margin: 50px auto;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -os-user-select: none;
-  user-select: none; }
-  .sched * {
-    font-family: 'Arial'; }
-  .sched table {
-    background: #f8f8f8;
-    border-collapse: collapse; }
-    .sched table tr:not(first-child) td {
-      height: 30px;
-      width: 100px;
-      text-align: center;
-      border: 1px solid #7E7E7E;
-      background: #606060; }
-      .sched table tr:not(first-child) td:first-child, .sched table tr:not(first-child) td:nth-child(9) {
-        background: #465ea3; }
-      .sched table tr:not(first-child) td:last-child {
-        border: none !important; }
-    .sched table tr:first-child td {
-      height: 60px;
-      color: white; }
-  .sched div[class*="sched-"] {
-    position: absolute; }
-  .sched .sched-title {
-    width: 990px;
-    height: 60px;
-    top: 50px;
-    background-color: #36497E;
-    text-align: center; }
-    .sched .sched-title span.title {
-      vertical-align: middle;
-      margin-top: 24px;
-      position: inherit; }
-  .sched .sched-time {
-    top: 110px;
-    background-color: #304171; }
-    .sched .sched-time .holder {
-      top: 0px;
-      position: relative; }
-      .sched .sched-time .holder .time {
-        display: inline-block;
-        height: 29.97px;
-        width: 97.8px;
-        border-right: 0.8px solid #979797;
-        text-align: center; }
-        .sched .sched-time .holder .time:not(:first-child) {
-          margin-left: -3.94px; }
-        .sched .sched-time .holder .time span.detail {
-          position: inherit;
-          top: 5px;
-          position: relative;
-          color: white; }
-  .sched .sched-options {
-    top: 110px; }
-    .sched .sched-options .sched-options-holder {
-      position: relative;
-      left: 890px;
-      top: 0px;
-      width: 100px;
-      background: #dfdfdf;
-      height: 439.5px; }
-
-* {
-  padding: 0;
-  margin: 0; }
+*, * > *, * ~ *, * + * {
+  margin: 0;
+  padding: 0; }
 
 /*# sourceMappingURL=main.css.map */
