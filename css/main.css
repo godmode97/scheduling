@@ -1,11 +1,12 @@
 #app {
-  display: flex;
-  flex-direction: column;
   font-family: 'Arial';
-  color: white; }
+  color: white;
+  align-items: flex-start;
+  margin: auto 50px !important;
+  background: #d2d2d2; }
   #app #schedule {
     max-width: 775px;
-    margin: 50px auto; }
+    margin: 0 !important; }
     #app #schedule table {
       z-index: -3;
       border-collapse: collapse;
@@ -21,7 +22,7 @@
       #app #schedule table tbody tr td {
         border: 1px solid #363636;
         height: 25px;
-        width: 85px;
+        width: 200px;
         text-align: center;
         -webkit-user-select: none;
         -ms-user-select: none;
@@ -31,20 +32,75 @@
         background: #0B0A1D; }
         #app #schedule table tbody tr td:first-child, #app #schedule table tbody tr td:nth-child(9) {
           background: #151336; }
-  #app .sched-option {
-    background-color: #e5e5e5; }
-    #app .sched-option select {
-      padding: 10px;
-      width: 170px; }
+    #app #schedule .sched-option {
+      max-width: 700px;
+      display: flex;
+      flex: 1;
+      margin: 0 !important; }
+      #app #schedule .sched-option select {
+        padding: 10px; }
 
 .highlighted {
   background: red; }
 
+#app, .sched-option {
+  display: inline-block !important; }
+
+.color1 {
+  background: #34495e !important;
+  border: 1px solid #34495e !important; }
+
+.color2 {
+  background: #2980b9 !important;
+  border: 1px solid #2980b9 !important; }
+
+.color3 {
+  background: #27ae60 !important;
+  border: 1px solid #27ae60 !important; }
+
+.color4 {
+  background: #e67e22 !important;
+  border: 1px solid #e67e22 !important; }
+
+.color5 {
+  background: #f1c40f !important;
+  border: 1px solid #f1c40f !important; }
+
+.color6 {
+  background: #c0392b !important;
+  border: 1px solid #c0392b !important; }
+
+.color7 {
+  background: #1abc9c !important;
+  border: 1px solid #1abc9c !important; }
+
+.color8 {
+  background: #d35400 !important;
+  border: 1px solid #d35400 !important; }
+
+.color9 {
+  background: #2c3e50 !important;
+  border: 1px solid #2c3e50 !important; }
+
+.color10 {
+  background: #e74c3c !important;
+  border: 1px solid #e74c3c !important; }
+
+.color {
+  transition: 0.3s;
+  position: relative;
+  color: white !important; }
+
+.highlight-1 {
+  border-left: 2px solid #34495e !important;
+  border-right: 2px solid #34495e !important; }
+
 html {
   box-sizing: border-box; }
 
-*, * > *, * ~ *, * + * {
+#app *, #app > *, #app ~ *, #app + * {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  box-sizing: border-box !important; }
 
 /*# sourceMappingURL=main.css.map */

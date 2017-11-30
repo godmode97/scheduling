@@ -10,7 +10,6 @@
 // 	border:none;
 	
 // }
-
 // ::-webkit-scrollbar:horizontal
 // {
 // 	height: 20px;
@@ -35,7 +34,8 @@
 html{
 	box-sizing: border-box;
 }
-*,*>*,*~*,*+*{
+#app *,#app>*,#app~*,#app+*{
 	margin:0;
 	padding:0;
+	box-sizing: border-box!important;
 }

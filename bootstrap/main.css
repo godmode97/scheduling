@@ -1,0 +1,57 @@
+#app {
+  font-family: 'Arial';
+  color: white;
+  align-items: flex-start;
+  margin: auto 50px !important;
+  background: #d2d2d2; }
+  #app #schedule {
+    max-width: 775px;
+    margin: 0 !important; }
+    #app #schedule table {
+      z-index: -3;
+      border-collapse: collapse;
+      border: none !important; }
+      #app #schedule table tbody tr:first-child > td {
+        height: 75px;
+        font-size: 26.25px;
+        font-weight: bold;
+        color: white;
+        background: #465D9E !important; }
+      #app #schedule table tbody tr:nth-child(2) > td, #app #schedule table tbody tr:last-child > td {
+        background: #2E3E6B !important; }
+      #app #schedule table tbody tr td {
+        border: 1px solid #363636;
+        height: 25px;
+        width: 150px;
+        text-align: center;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+        color: #95989A;
+        background: #0B0A1D; }
+        #app #schedule table tbody tr td:first-child, #app #schedule table tbody tr td:nth-child(9) {
+          background: #151336; }
+  #app .sched-option {
+    max-width: 525px;
+    display: flex;
+    flex: 1;
+    margin: 0 !important; }
+    #app .sched-option select {
+      padding: 10px; }
+
+.highlighted {
+  background: red; }
+
+#app, .sched-option {
+  display: inline-block !important; }
+
+html {
+  box-sizing: border-box; }
+
+*, * > *, * ~ *, * + * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box !important; }
+
+/*# sourceMappingURL=main.css.map */

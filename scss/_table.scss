@@ -1,14 +1,21 @@
 $top:50px;
+$maxWidth:700px;
 #app{
-    display:flex;
-    flex-direction: column;
+    
+    // display:flex;
+    // flex-direction: row;
     font-family: 'Arial';
     color:white;
+    align-items: flex-start;
+    margin:auto $top!important;
+    // max-width: 0;
+    background: rgb(211, 211, 211)*0.999;
+    // max-width: 1000px;
     #schedule{
         // height:400px;
         // overflow-y: scroll;
         max-width: 775px;
-        margin:  $top auto;
+        margin:0!important;
         // background:$tblbackground;
             table{
                 z-index: -3;
@@ -46,17 +53,80 @@ $top:50px;
                     }
                 }
             }
+            .sched-option{
+                // background-color: white*0.9;
+                max-width: $width*3.5;
+                display:flex;
+                flex:1;
+                margin:0!important;
+                select{
+                    padding:10px;
+                    // align-items: center;
+                }
+            }
     }
-    .sched-option{
-        background-color: white*0.9;
-        select{
-            padding:10px;
-            width:$width*2;
-        }
+   
+    
+}
+.highlighted{
+    background:red;
+}
+
+#app,.sched-option{
+    display: inline-block!important;
+}
+
+.color1{
+    background:$color1!important;
+    border:1px solid $color1!important;
+}
+.color2{
+    background:$color2!important;
+    border:1px solid $color2!important;
+}
+.color3{
+    background:$color3!important;
+    border:1px solid $color3!important;
+}
+.color4{
+    background:$color4!important;
+    border:1px solid $color4!important;
+}
+.color5{
+    background:$color5!important;
+    border:1px solid $color5!important;
+}
+.color6{
+    background:$color6!important;
+    border:1px solid $color6!important;
+}
+.color7{
+    background:$color7!important;
+    border:1px solid $color7!important;
+}
+.color8{
+    background:$color8!important;
+    border:1px solid $color8!important;
+}
+.color9{
+    background:$color9!important;
+    border:1px solid $color9!important;
+}
+.color10{
+    background:$color10!important;
+    border:1px solid $color10!important;
+}
+.color{
+    transition:0.3s;
+    position: relative;
+    color:white!important;
+    &:hover{
+       
     }
 }
 
-
-.highlighted{
-    background:red;
+.highlight-1{
+    border-left:2px solid $color1!important;
+    border-right:2px solid $color1!important;
+    
 }
