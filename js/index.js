@@ -18,7 +18,7 @@
         //     return this.addEventListener(`on${e}`,fcn())
         // }
         // else throw new Error('Parameter 1 expects to be string, 2 is function')
-        console.log(this)
+        // console.log(this)
     }
     
     /**
@@ -52,7 +52,7 @@
 
     var day=["MON","TUE","WED","THURS","FRI","SAT","SUN"],
     color=["#34495e","#2980b9","#27ae60","#e67e22","#f1c40f","#c0392b","#1abc9c","#d35400","#2c3e50","#e74c3c"],
-    time=[]
+    time=[],room=["301","302","303"]
     //load time object
     
     var timein=function(){
@@ -163,16 +163,35 @@
      * @param {*} time1 collection
      * @param {*} time2 1 node
      */
-    var checkOverlap=function(time1,time2){
-        //  step 1
-        //      check all data
-
+    var checkOverlap=function(time1,_day=""){
+        
+        const finDay=Array.from(document.querySelectorAll('td'))
+        const filtered=finDay.filter(i=>i.dataset.day==_day && i.dataset.index>=0).map(i=>parseInt(i.dataset.id))
+        const basis=time1.map(i=>parseInt(i.dataset.id))
+        var arr=[]
 
         var hasOverlap=false
-        var checkDay=Array.from(time1).every(function(data){
-            // return (data.day==time2.)
+
+        basis.forEach(function(i){
+            hasOverlap=filtered.some(tm=>tm==parseInt(i))
+            // console.log([i,...filtered])
+            arr.push(hasOverlap)
         })
-        return hasOverlap
+
+        //check time per collection
+        // time1.forEach(function(tm){
+        //     hasOverlap=filtered.some(time=>time.dataset.id==tm.time_in ||time.dataset.id==tm.time_out)
+        //     arr.push(hasOverlap)
+        //     // console.log(time.attributeList)
+        //     // console.log(time )
+        //     // console.log(`time1 ${time1}`)
+        // })
+
+        // var checkDay=Array.from(time1).every(function(data){
+        //     // return (data.day==time2.)
+        // })
+        // console.log()
+        return arr.some(i=>i==true)
     }
 
     
@@ -185,7 +204,7 @@
         //     console.log(this)
         // }
         // console.log($('#app'))
-        let _time=timein(),str='',inn=1,_out=1,sday="MON",i=0
+        let _time=timein(),str='',inn=1,_out=1,sday="MON",i=0,_room="301"
         render('#app',`
             <div id="schedule">
             </div>
@@ -210,7 +229,12 @@
         <select id="day">
             ${day.map(dy=>`<option>${dy}</option>`)}
         </select>
-    `)
+        `)
+        render('.sched-option',`
+        <select id="room">
+            ${room.map(rm=>`<option>${rm}</option>`)}
+        </select>
+        `)
 
         $('#timein').onchange=function(){
             inn=this.value
@@ -220,48 +244,61 @@
             
             // var filtered=$(`td[data-day="MON"]`).filter(day=>day.dataset.id>=parseInt(inn) && day.dataset.id<parseInt(this.value))
             const filtered=filterTime(inn,this.value,sday)
-            console.log(`${inn} ${this.value}`)
+            // console.log(`${inn} ${this.value}`)
             // console.log(`${filtered} ${inn} ${this.value}`)
             
             if(filtered.length>0){
                 
                 var index=i+1
-                filtered.forEach(function(value){
+                
+                if(!checkOverlap(filtered,sday)){
+                    filtered.forEach(function(value){
                         value.classList.add(`color${(index>9)?0:index}`,`color`)
                         // value.__proto__.val=value.dataset.time
-                        value.dataset.id=i
+                        value.dataset.index=parseInt(i)
 
                         value.onclick=function(){
                             // value.dataset.id=0
-                            $(`td[data-day="${time[value.dataset.id].day}"]`).forEach(function(td){
+                            $(`td[data-day="${time[value.dataset.index].day}"]`).forEach(function(td){
                                 td.classList.add('highlight-1')
                             })
-                            $(`td[data-timein="${time[value.dataset.id].time_in}"]`).classList.add(`color${(index>9)?0:index}`)
-                            $(`td[data-timeout="${time[value.dataset.id].time_out}"]`).classList.add(`color${(index>9)?0:index}`)
-                            console.log(time[value.dataset.id])
+                            $(`td[data-timein="${time[value.dataset.index].time_in}"]`).classList.add(`color${(index>9)?0:index}`)
+                            $(`td[data-timeout="${time[value.dataset.index].time_out}"]`).classList.add(`color${(index>9)?0:index}`)
+                            // console.log(time[value.dataset.index])
                             
                             // proto()
                         }
-                })
+                    })
+                    time.push({
+                        index:i,
+                        time_in:parseInt(inn),
+                        time_out:parseInt(this.value),
+                        day:sday,
+                        room:_room
+                    })
+                    i+=1
+                }
+                else{
+                    alert("Overlapping Time")
+                }
                 //pushes object data to time array
-                time.push({
-                    index:i,
-                    time_in:parseInt(inn),
-                    time_out:parseInt(this.value),
-                    day:sday,
-                    room:"304"
-                })
-                i+=1
+                
+                
             }
             else{
                 // console.log(filtered)
                 alert('Invalid Time!')
             }
-            console.log(time)
+            // console.log(time)
+            // console.log(checkOverlap(filtered,sday))
         }
         $('#day').onchange=function(){
             sday=this.value
-            console.log(sday)
+            // console.log(sday)
+        }
+        $('#room').onchange=function(){
+            _room=this.value
+            // console.log(_room)
         }
     }
 })()
