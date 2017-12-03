@@ -103,4 +103,79 @@ html {
   padding: 0;
   box-sizing: border-box !important; }
 
+body .overlay {
+  background: transparent !important;
+  width: 100%;
+  height: 100%;
+  transition: 0.3s;
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0; }
+body .show {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  z-index: 2; }
+body .modal-show {
+  top: 200px !important;
+  transform: scale(1); }
+
+button:focus ~ #modal > .modal {
+  top: 10px; }
+
+.modal {
+  margin: 10px auto !important;
+  font-family: 'Arial';
+  width: 410px;
+  background: #cccccc;
+  position: relative;
+  top: -200px;
+  transition: cubic-bezier(0.79, 0.01, 0.09, 0.99) 0.8s;
+  transform: scale(0.1);
+  box-shadow: 1px 1px 30px rgba(0, 0, 0, 0.5);
+  border-radius: 5px; }
+  .modal * {
+    margin: 0; }
+  .modal .modal-header {
+    color: white; }
+    .modal .modal-header h2 {
+      background: #2980b9;
+      border-radius: 5px 5px 0px 0px;
+      padding: 10px; }
+  .modal .modal-body {
+    color: #404040; }
+    .modal .modal-body h3 {
+      margin: 10px; }
+    .modal .modal-body > ul {
+      margin: 0; }
+      .modal .modal-body > ul > li {
+        color: #515151;
+        list-style-type: square;
+        margin: 5px; }
+      .modal .modal-body > ul > p {
+        font-size: 24px;
+        margin: 15px; }
+  .modal .modal-button {
+    border-radius: 0px 0px 5px 5px;
+    background: #1c5981; }
+    .modal .modal-button button, .modal .modal-button input[type="button"] {
+      padding: 8px 20px;
+      margin: 10px;
+      border: none;
+      background: #35a6f0;
+      color: white;
+      outline-color: white;
+      outline-width: 4px;
+      position: relative;
+      left: 325px;
+      border-radius: 5px; }
+
+.error-name {
+  background: #e74c3c !important; }
+
+.error-button {
+  background: #ff5b48 !important; }
+
+.error-bottom {
+  background: #b83c30 !important; }
+
 /*# sourceMappingURL=main.css.map */
