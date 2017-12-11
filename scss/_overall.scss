@@ -56,7 +56,14 @@ body{
     }
     .modal-show{
         // z-index: 3;
-        top:200px!important;
+        top:250px!important;
         transform: scale(1);
+    }
+}
+
+select{
+    
+    &>option{
+
     }
 }

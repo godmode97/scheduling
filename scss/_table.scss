@@ -60,9 +60,29 @@ $maxWidth:700px;
                 flex:1;
                 margin:0!important;
                 select{
-                    padding:10px;
-                    // align-items: center;
+                   color:white;
+                   &>option{
+                       &:hover{
+                           background:$color4*0.8!important;
+                       }
+                   }
+                   &:active{
+                       outline:none;
+                   }
+                   &>option:hover{
+                    box-shadow: 0 0 10px 100px $color4*0.8 inset!important;
+                    
+                   }
+                    &,input[type="button"]{
+                        padding:10px;
+                        margin:5px;
+                        background-color:$color4;
+                        border:0;
+                    }
+
                 }
+                
+
             }
     }
    

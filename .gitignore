@@ -1,3 +1,4 @@
-/bootstrap
-/bootstrap sass
-/scss
+bootstrap
+bootstrap sass
+scss
+node_modules

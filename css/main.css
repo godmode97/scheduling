@@ -38,7 +38,18 @@
       flex: 1;
       margin: 0 !important; }
       #app #schedule .sched-option select {
-        padding: 10px; }
+        color: white; }
+        #app #schedule .sched-option select > option:hover {
+          background: #b8641b !important; }
+        #app #schedule .sched-option select:active {
+          outline: none; }
+        #app #schedule .sched-option select > option:hover {
+          box-shadow: 0 0 10px 100px #b8641b inset !important; }
+        #app #schedule .sched-option select, #app #schedule .sched-option select input[type="button"] {
+          padding: 10px;
+          margin: 5px;
+          background-color: #e67e22;
+          border: 0; }
 
 .highlighted {
   background: red; }
@@ -116,7 +127,7 @@ body .show {
   background-color: rgba(0, 0, 0, 0.8) !important;
   z-index: 2; }
 body .modal-show {
-  top: 200px !important;
+  top: 250px !important;
   transform: scale(1); }
 
 button:focus ~ #modal > .modal {

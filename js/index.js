@@ -51,7 +51,7 @@
      */
 
     var day=["MON","TUE","WED","THURS","FRI","SAT","SUN"],
-    color=["#34495e","#2980b9","#27ae60","#e67e22","#f1c40f","#c0392b","#1abc9c","#d35400","#2c3e50","#e74c3c"],
+    color=["#34495e","#2980b9","#27ae60","#e67e22","#f1c40f","#c0392b","#1abc9c","#d35400","#2c3e50","#e74c3c","8e44ad","d35400","16a085"],
     time=[],room=["301","302","303"],
     error={
         title:"Error Message",
@@ -68,18 +68,6 @@
         var start=7,arr=[],_tm=0,_ct=0, i=0,pm=false
         for(i=7 ; i<=12 ; i++){
             _tm++
-            arr.push({
-                data:`${i}:00`,
-                time:`${i}:00`,
-                value:`${i}:00 ${(pm)?"pm":"am"}`,
-                index:_tm
-            })
-            arr.push({
-                data:`${i}:30`,
-                time:`${i}:30`,
-                value:`${i}:30 ${(pm)?"pm":"am"}`,
-                index:_tm+=1
-            })
             if(i==12){
                 i=0
                 start=0
@@ -87,6 +75,19 @@
                 _ct+=1
                 if(_ct>1)break
             }
+            arr.push({
+                data:`${(i==0)?12:i}:00`,
+                time:`${(i==0)?12:i}:00`,
+                value:`${(i==0)?12:i}:00 ${(pm)?"pm":"am"}`,
+                index:_tm
+            })
+            arr.push({
+                data:`${(i==0)?12:i}:30`,
+                time:`${(i==0)?12:i}:30`,
+                value:`${(i==0)?12:i}:30 ${(pm)?"pm":"am"}`,
+                index:_tm+=1
+            })
+            
             
         }
         // console.log(arr)
@@ -237,6 +238,9 @@
             ${room.map(rm=>`<option>${rm}</option>`)}
         </select>
         `)
+        render('.sched-option',`
+            <input type="button" value="Add Schedule">
+        `)
         //render overlay holder for modal       
         render('body',`
                     <div class="overlay" data-shown="true"></div>
@@ -288,7 +292,7 @@
             $('.modal-body>ul').innerHTML=`<p>${messageInfo}</p>`
         }
         $('.modal-header>h2').innerText=messageContent
-        console.log(typeof messageInfo)
+        // console.log(typeof messageInfo)
         $('.modal-body>h3').innerText=(message=='message')?"Info:":"Error! Possible Reasons are:"
         
     }
@@ -327,19 +331,21 @@
                 })
                 $(`tr:nth-child(2)>td,tr:nth-child(31)>td`).forEach(function(td){
                     td.removeAttribute('style')
-                    console.log(td)
+                    // console.log(td)
                 })
                 $('tr>td').filter(td=>td.dataset.index==null).forEach(function(td){
                     td.style.borderColor=loadDefault.color
                     td.style.borderWidth="1px"
                 })
+                $('tr>td').filter(td=>td.dataset.index>=0).forEach(function(td){
+                    td.style.borderColor=time[td.dataset.index].color
+                    td.style.borderWidth="1px"
+                    td.style.transform="scale(1)"
+                    td.style.zIndex=1
+                })
             }
             
         })
-        // $(`tr:nth-child(2)`).forEach(function(tds){
-            // td.removeAttribute('style')
-            
-        // })
         
     }
 
@@ -349,19 +355,8 @@
         
         let _time=timein(),str='',inn=1,_out=1,sday="MON",i=0,_room="301",overlay=true
         
-        
         initializeDOM();
         
-        // console.log(colorLuminance(color[0],-0.5))
-        // console.log(colorLuminance(color[0],0.5))
-        // $('body').style.background=colorLuminance(color[0],0.5)
-        // setTimeout(() => {
-        //     $('body').style.background=colorLuminance(color[0],1)
-        // }, 1000);
-        // console.log($(`table`).rowIndex)
-        
-        
-
         $('#timein').onchange=function(){
             inn=this.value
         }
@@ -395,6 +390,7 @@
                                     td.style.borderLeftWidth="2px"
                                     td.style.borderRightWidth="2px"
                                     value.style.transition="0.3s"
+                                    // td.style.
                                     
                                     $('td:first-child,td:last-child').forEach(function(td){
                                         td.removeAttribute('style')
@@ -416,12 +412,14 @@
                                 })
                                 $(`td[data-day="${time[value.dataset.index].day}"]`)[29].setAttribute('style',`background:${colorLuminance(time[value.dataset.index].color,-0.2)}!important`)
                                 $(`td[data-day="${time[value.dataset.index].day}"]`)[0].setAttribute('style',`background:${colorLuminance(time[value.dataset.index].color,-0.2)}!important`)
-
-                                // $(`td[data-timein="${time[value.dataset.index].time_in}"]`).classList.add(`color${(index>9)?0:index}`)
-                                // $(`td[data-timeout="${time[value.dataset.index].time_out}"]`).classList.add(`color${(index>9)?0:index}`)
-                                // $('.overlay').classList.add('show')
-                                // $('.modal').classList.add('modal-show')
-                                // $('.modal-header h2').innerText=time[value.dataset.index].day
+                                var getDay=filterTime((time[value.dataset.index].time_in),parseInt(time[value.dataset.index].time_out),time[value.dataset.index].day)
+                                getDay.forEach(function(item){
+                                    item.style.position="relative"
+                                    item.style.transition="0.3s"
+                                    item.style.transform="scale(2)"
+                                    item.style.zIndex=2
+                                })
+                                
                                 showMessage('message','Schedule Info',`The "subject" is scheduled on <b>${time[value.dataset.index].day}</b> at <b>${time[value.dataset.index].timein}</b> to <b>${time[value.dataset.index].timeout}</b>`,time[value.dataset.index].color)
                             }
                         })
@@ -443,7 +441,7 @@
                         `The inputted number of units is ${filtered.length/2}`],color[9])
                     }
                     
-                    console.log(filtered)
+                    // console.log(filtered)
                 }
                 else{
                     showMessage('error','Overlapping Time!',["Some Schedules in on the selected day is occupied","Time In can be in",""],color[9])

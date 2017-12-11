@@ -1,0 +1,13 @@
+{
+  "name": "Scheduling",
+  "version": "1.0.0",
+  "description": "Scheduling",
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "scripts": {
+    "start": "node index"
+  },
+  "repository": "https://github.com/godmode97/scheduling",
+  "license": "MIT"
+}
